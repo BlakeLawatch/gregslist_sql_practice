@@ -36,6 +36,14 @@ namespace gregslist_sql_practice.Repositories
 
         }
 
+        internal Sport EditSport(int sportId)
+        {
+            string sql = $"SELECT FROM sports WHERE id = {sportId};";
+
+            Sport sport = _db.Query(sql, new { sportId }).FirstOrDefault();
+            return sport;
+        }
+
         internal Sport GetSportById(int sportId)
         {
             string sql = $"SELECT * FROM sports WHERE id = @sportId;";

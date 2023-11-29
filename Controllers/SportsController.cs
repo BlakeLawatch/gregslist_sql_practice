@@ -77,5 +77,20 @@ namespace gregslist_sql_practice.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpPut("{sportId}")]
+        public ActionResult<Sport> EditSport(int sportId)
+        {
+            try
+            {
+                Sport sport = _sportsService.EditSport(sportId);
+                return Ok(sport);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
