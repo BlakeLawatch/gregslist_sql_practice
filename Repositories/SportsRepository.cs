@@ -28,6 +28,14 @@ namespace gregslist_sql_practice.Repositories
             return sport;
         }
 
+        internal void DestroySport(int sportId)
+        {
+            string sql = "DELETE FROM sports WHERE id = @sportId;";
+
+            _db.Query<Sport>(sql, new { sportId }).FirstOrDefault();
+
+        }
+
         internal Sport GetSportById(int sportId)
         {
             string sql = $"SELECT * FROM sports WHERE id = @sportId;";

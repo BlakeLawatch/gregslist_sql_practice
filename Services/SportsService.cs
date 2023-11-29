@@ -20,6 +20,18 @@ namespace gregslist_sql_practice.Services
             return sport;
         }
 
+        internal Sport DestroySport(int sportId)
+        {
+            Sport sport = GetSportById(sportId);
+            _repository.DestroySport(sportId);
+
+            if (sport == null)
+            {
+                throw new Exception($"No sport to delete with the ID: {sportId}");
+            }
+            return sport;
+        }
+
         internal Sport GetSportById(int sportId)
         {
             Sport sport = _repository.GetSportById(sportId);

@@ -62,5 +62,20 @@ namespace gregslist_sql_practice.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpDelete("{sportId}")]
+        public ActionResult<Sport> DestroySport(int sportId)
+        {
+            try
+            {
+                Sport sport = _sportsService.DestroySport(sportId);
+                return Ok(sport);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
