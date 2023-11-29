@@ -16,6 +16,18 @@ namespace gregslist_sql_practice.Repositories
             _db = db;
         }
 
+        internal Sport CreateSport(Sport sportData)
+        {
+            string sql = @"
+            INSERT INTO sports (name, teams, inAmerica, watchable)
+            VALUE(@Name, @Teams, @InAmerica, @Watchable);
+            
+            SELECT * FROM sports WHERE id = LAST_INSERT_ID();";
+
+            Sport sport = _db.Query<Sport>(sql, sportData).FirstOrDefault();
+            return sport;
+        }
+
         internal Sport GetSportById(int sportId)
         {
             string sql = $"SELECT * FROM sports WHERE id = @sportId;";

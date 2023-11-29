@@ -14,6 +14,12 @@ namespace gregslist_sql_practice.Services
             _repository = repository;
         }
 
+        internal Sport CreateSport(Sport sportData)
+        {
+            Sport sport = _repository.CreateSport(sportData);
+            return sport;
+        }
+
         internal Sport GetSportById(int sportId)
         {
             Sport sport = _repository.GetSportById(sportId);

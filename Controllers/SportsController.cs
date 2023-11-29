@@ -47,5 +47,20 @@ namespace gregslist_sql_practice.Controllers
                 return BadRequest(error.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult<Sport> CreateSport([FromBody] Sport sportData)
+        {
+            try
+            {
+                Sport sport = _sportsService.CreateSport(sportData);
+                return Ok(sport);
+            }
+            catch (Exception error)
+            {
+
+                return BadRequest(error.Message);
+            }
+        }
     }
 }
