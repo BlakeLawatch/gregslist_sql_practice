@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: your-dockerhub-username/gregslist_sql_practice:latest
+    env_file:
+      - gregslist_sql_practice-env
+    ports:
+      - "7045:80"
